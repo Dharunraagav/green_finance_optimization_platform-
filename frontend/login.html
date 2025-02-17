@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Finance Optimization</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="absolute top-0 left-0 w-full px-8 py-4">
+    <div class="flex justify-between items-center">
+      <!-- "TEAM ROG" on the top left -->
+      <h1 class="text-3xl font-bold text-green-500">TEAM ROG</h1>
+      <!-- "GREEN FINANCE OPTIMIZATION" centered at the top -->
+      <h2 class="text-4xl font-bold text-white text-center flex-grow">GREEN FINANCE OPTIMIZATION</h2>
+    </div>
+    <p class="text-center text-lg text-gray-300 mt-2">Empowering Sustainable Investments for a Greener Tomorrow</p>
+  </div>
+  <!-- Login Page -->
+  <div id="loginPage" class="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-400 via-teal-500 to-blue-500">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Login</h2>
+      <input type="email" id="email" placeholder="Email" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-lg">
+      <input type="password" id="password" placeholder="Password" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-lg">
+      <button onclick="login()" class="w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition">Login</button>
+
+      <!-- Create Account Link -->
+      <p class="text-white mt-4">If you do not have a Team ROG account, <a href="create_account.html" class="text-green-400">Create Account</a></p>
+    </div>
+  </div>
+
+  <script>
+    // This function will handle the login action
+    function login() {
+      document.getElementById('loginPage').classList.add('hidden');  // Hide login page
+      window.location.href = 'index.html';  // Redirect to the main dashboard page (index.html)
+    }
+  </script>
+
+</body>
+</html>

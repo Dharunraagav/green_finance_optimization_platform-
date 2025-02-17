@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Finance Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-200">
+ 
+  <!-- Main Dashboard Page (Initially hidden until login) -->
+  <div id="mainPage" class="hidden flex h-screen">
+
+  <!-- Sidebar -->
+  <div class="flex h-screen">
+    <div class="w-64 bg-green-900 p-6">
+      <h1 class="text-3xl font-bold text-green-500 mb-6">TEAM ROG</h1>
+      <h2 class="text-xl text-green-400 mb-4">Green Finance Optimization</h2>
+      <p class="text-sm text-gray-400 mb-8">Empowering Sustainable Investments for a Greener Tomorrow</p>
+      <nav class="space-y-4">
+        <button onclick="showSection('dashboard')" class="flex items-center space-x-3 text-lg text-gray-300 hover:text-white w-full">
+          <span>📊 Dashboard</span>
+        </button>
+        <button onclick="showSection('upload')" class="flex items-center space-x-3 text-lg text-gray-300 hover:text-white w-full">
+          <span>📤 Upload Document</span>
+        </button>
+        <button onclick="showSection('terms')" class="flex items-center space-x-3 text-lg text-gray-300 hover:text-white w-full">
+          <span>📜 Terms and Conditions</span>
+        </button>
+        <!-- Added Profile button here -->
+        <button onclick="showSection('profile')" class="flex items-center space-x-3 text-lg text-gray-300 hover:text-white w-full">
+          <span>👤 Profile</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+      <!-- Dashboard Section -->
+      <div id="dashboard" class="hidden">
+        <h1 class="text-3xl font-bold text-white mb-4">📊 Dashboard</h1>
+        <p class="text-lg text-gray-400 mb-4">Track loan applications and model outputs.</p>
+        
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <table class="w-full text-gray-300">
+            <thead>
+              <tr class="bg-green-700 text-white">
+                <th class="p-3">Company</th>
+                <th class="p-3">Application Status</th>
+                <th class="p-3">Credit Score</th>
+                <th class="p-3">Model Output</th>
+              </tr>
+            </thead>
+            <tbody id="dashboard-data">
+              <!-- Data from model will be inserted here -->
+          
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Upload Document Section -->
+      <div id="upload">
+        <h1 class="text-3xl font-bold text-white mb-4">📤 Upload Document</h1>
+        <p class="text-lg text-gray-400 mb-4">Submit documents for financial optimization.</p>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+          <input type="file" id="fileUpload" class="file-input file-input-bordered file-input-primary w-full max-w-xs mb-4" />
+          
+          <!-- Terms and Conditions Checkbox -->
+          <div class="flex items-center justify-center mt-4">
+            <input type="checkbox" id="termsCheckbox" class="mr-2" onchange="toggleSubmitButton()" />
+            <label for="termsCheckbox" class="text-sm text-gray-300">
+              I have read and agree to the <a href="#" onclick="showSection('terms')" class="text-green-400 underline">Terms and Conditions</a> .
+            </label>
+          </div>
+
+          <!-- Submit Button (Initially Disabled) -->
+          <button id="submitButton" onclick="submitDocument()" class="mt-4 px-6 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            Submit
+          </button>
+        </div>
+      </div>
+
+      <!-- Terms and Conditions Section -->
+      <div id="terms" class="hidden">
+        <h1 class="text-3xl font-bold text-white mb-4">📜 Terms and Conditions</h1>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-gray-300">
+          <p><strong>Data Submission:</strong> Customers must submit project reports in PDF, DOCX, or text formats as specified.</p>
+          <p><strong>Data Privacy and Security:</strong> All data submitted by customers will be handled with strict confidentiality.</p>
+          <p><strong>Data Extraction and Processing:</strong> Text extraction from submitted documents will be conducted using tools like LayoutLMv3 and python-docx.</p>
+          <p><strong>Risk Assessment:</strong> The platform uses a fine-tuned AI model (e.g., Llama 3.2) to classify project risks.</p>
+          <p><strong>Investment Prediction:</strong> ROI predictions will be generated using models like XGBoost or random forest.</p>
+          <p><strong>Dashboard and Outputs:</strong> Customers will have access to a dashboard displaying risk scores, predicted ROI, and more.</p>
+          <p><strong>Disclaimer:</strong> The predictions and suggestions provided are based on the data submitted and models used.</p>
+          <p><strong>User Responsibility:</strong> Users are responsible for the accuracy and completeness of the information provided.</p>
+          <p><strong>Terms of Use:</strong> By using the platform, customers agree to the terms and conditions outlined.</p>
+        </div>
+      </div>
+
+      <!-- Profile Section -->
+<div id="profile" class="hidden">
+  <h1 class="text-3xl font-bold text-white mb-4">👤 Profile</h1>
+  <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-gray-300">
+    <div class="mb-4">
+      <label class="text-sm" for="userNameInput">Name:</label>
+      <input type="text" id="userNameInput" class="w-full p-2 bg-gray-700 text-gray-200 rounded mt-2" value="John Doe">
+    </div>
+
+    <div class="mb-4">
+      <label class="text-sm" for="userEmailInput">Email:</label>
+      <input type="email" id="userEmailInput" class="w-full p-2 bg-gray-700 text-gray-200 rounded mt-2" value="johndoe@example.com">
+    </div>
+
+    <div class="mb-4">
+      <label class="text-sm" for="userOrgInput">Organization:</label>
+      <input type="text" id="userOrgInput" class="w-full p-2 bg-gray-700 text-gray-200 rounded mt-2" value="Green Solutions Ltd.">
+    </div>
+
+    <div class="mb-4">
+      <label class="text-sm" for="userRoleInput">User Role:</label>
+      <input type="text" id="userRoleInput" class="w-full p-2 bg-gray-700 text-gray-200 rounded mt-2" value="User">
+    </div>
+
+    <h2 class="text-xl font-bold text-white mt-4">Upload History</h2>
+    <ul id="uploadHistory" class="list-disc list-inside text-gray-400">
+      <li>No uploads yet</li>
+    </ul>
+
+    <h2 class="text-xl font-bold text-white mt-4">Preferences</h2>
+    <label class="flex items-center">
+      <input type="checkbox" id="darkModeToggle" class="mr-2"> Enable Dark Mode
+    </label>
+
+    <h2 class="text-xl font-bold text-white mt-4">Account Settings</h2>
+    <button onclick="saveProfile()" class="mt-4 px-6 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition-colors">
+      Save Changes
+    </button>
+
+    <button onclick="logout()" class="mt-4 px-6 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition-colors">
+      Logout
+    </button>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+
+  <script>
+    function showSection(section) {
+        document.getElementById('dashboard').classList.add('hidden');
+        document.getElementById('upload').classList.add('hidden');
+        document.getElementById('terms').classList.add('hidden');
+        document.getElementById('profile').classList.add('hidden');
+        document.getElementById(section).classList.remove('hidden');
+    }
+
+    function toggleSubmitButton() {
+        document.getElementById("submitButton").disabled = !document.getElementById("termsCheckbox").checked;
+    }
+
+    function updateDashboard(data) {
+        const dashboardTable = document.getElementById("dashboard-data");
+        dashboardTable.innerHTML = "";
+
+        for (const [field, value] of Object.entries(data)) {
+            const tr = document.createElement("tr");
+            tr.classList.add("border-b", "border-gray-600");
+            tr.innerHTML = `<td class="p-3">${field}</td>
+                            <td class="p-3">${value}</td>`;
+            dashboardTable.appendChild(tr);
+        }
+    }
+
+    function submitDocument() {
+    const fileInput = document.getElementById("fileUpload");
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert("Please select a file to upload.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    fetch("http://127.0.0.1:5000/upload", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        if (data.data) {
+            updateDashboard(data.data);
+            showSection("dashboard");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Failed to upload document.");
+    });
+    }
+
+    function loadUserProfile() {
+        document.getElementById("uploadHistory").innerHTML = "<li>report1.pdf</li><li>greenfinance.docx</li>";
+    }
+
+    function logout() {
+        window.location.href = 'login.html';
+    }
+
+    window.onload = function() {
+        document.getElementById('mainPage').classList.remove('hidden');
+    };
+
+    document.querySelector("[onclick='showSection(\"profile\")']").addEventListener("click", loadUserProfile);
+</script>
+
+</body>
+</html>
