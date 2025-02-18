@@ -1,4 +1,3 @@
-
 # 🏦 **Loan Eligibility Analyzer**
 
 ![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg) ![Python Version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue) ![Groq API](https://img.shields.io/badge/Groq-API-green)
@@ -28,7 +27,7 @@ A lightweight and intelligent loan eligibility analyzer that evaluates financial
 
 ---
 
-## 📋 **Key Conditions**
+## 🗈️ **Key Conditions**
 
 The following conditions are evaluated to determine loan eligibility:
 
@@ -52,6 +51,11 @@ The following conditions are evaluated to determine loan eligibility:
   ```bash
   pip install python-docx pdfplumber groq
   ```
+
+### **Model Download**
+
+Download the pre-trained model (`.pth` file) from Google Drive:
+[Loan Eligibility Model - Google Drive](https://drive.google.com/file/d/19ENWebO3RXZCyG1aEFwPafs1sQYdCfer/view?usp=sharing)
 
 ### **Installation**
 
@@ -87,7 +91,7 @@ loan-eligibility-analyzer/
 
 ---
 
-## 🧪 **Example Usage**
+## 🤦🏻‍♂️ **Example Usage**
 
 Input File: `sample_loan_doc.docx`
 
@@ -119,12 +123,12 @@ CONDITION_THRESHOLDS = {
 
 ---
 
-## 📜 License
+## 🐝 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
-## 🙌 Contributing
+## 👌 Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request if you have ideas for improvements or new features.
 
 ---
@@ -160,3 +164,4 @@ GROQ_API_KEY=your_api_key_here
 ```
 
 ---
+
